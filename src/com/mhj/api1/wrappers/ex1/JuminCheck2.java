@@ -48,9 +48,4 @@ public class JuminCheck2 {
 		
 	}
 
-	private String valueOf(char charAt) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
