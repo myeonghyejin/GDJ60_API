@@ -3,9 +3,9 @@ package com.mhj.api1.strings.ex3;
 public class WeatherDTO {
 	
 	private String city;
-	private String temperature;
+	private int temperature;
 	private String status;
-	private String microdust;
+	private int microdust;
 	
 	public String getCity() {
 		return city;
@@ -13,10 +13,10 @@ public class WeatherDTO {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public String getTemperature() {
+	public int getTemperature() {
 		return temperature;
 	}
-	public void setTemperature(String temperature) {
+	public void setTemperature(int temperature) {
 		this.temperature = temperature;
 	}
 	public String getStatus() {
@@ -25,10 +25,10 @@ public class WeatherDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getMicrodust() {
+	public int getMicrodust() {
 		return microdust;
 	}
-	public void setMicrodust(String microdust) {
+	public void setMicrodust(int microdust) {
 		this.microdust = microdust;
 	}
 	

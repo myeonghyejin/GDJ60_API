@@ -15,7 +15,7 @@ public class WeatherInput {
 	//배열을 받고, 키보드로부터 검색할 도시명을 입력 받음
 	//찾은 DTO를 리턴, 없으면 null 리턴
 
-	public void search(WeatherDTO [] weatherDTOs) {
+	public WeatherDTO search(WeatherDTO [] weatherDTOs) {
 		System.out.println("검색할 도시명을 입력하세요.");
 		String search = sc.next().toUpperCase();
 		
@@ -26,6 +26,7 @@ public class WeatherInput {
 				weatherDTO = weatherDTOs[i];
 			}
 		}
+		return weatherDTO;
 	}
 	
 	//4. 지역 날씨 추가
@@ -39,11 +40,11 @@ public class WeatherInput {
 		System.out.println("추가할 지역명을 입력하세요.");
 		weatherDTO.setCity(sc.next());
 		System.out.println("기온을 입력하세요.");
-		weatherDTO.setTemperature(sc.next());
+		weatherDTO.setTemperature(sc.nextInt());
 		System.out.println("날씨를 입력하세요.");
 		weatherDTO.setStatus(sc.next());
 		System.out.println("미세먼지 농도를 입력하세요.");
-		weatherDTO.setMicrodust(sc.next());
+		weatherDTO.setMicrodust(sc.nextInt());
 		
 		WeatherDTO [] newInfo = new WeatherDTO[weatherDTOs.length+1];
 		
@@ -73,6 +74,7 @@ public class WeatherInput {
 			newInfo[idx] = weatherDTOs[i];
 			idx++;
 		}
+		return newInfo;
 		
 	}
 

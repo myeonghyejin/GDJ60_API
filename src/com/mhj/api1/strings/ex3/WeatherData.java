@@ -19,9 +19,9 @@ public class WeatherData {
 			WeatherDTO weatherDTO = new WeatherDTO();
 			
 			weatherDTO.setCity(datas[i]);
-			weatherDTO.setTemperature(datas[++i]);
+			weatherDTO.setTemperature(Integer.parseInt(datas[++i]));
 			weatherDTO.setStatus(datas[++i]);
-			weatherDTO.setMicrodust(datas[++i]);
+			weatherDTO.setMicrodust(Integer.parseInt(datas[++i]));
 			
 			dto[i/4] = weatherDTO;
 			//wethers[idx]=weatherDTO;

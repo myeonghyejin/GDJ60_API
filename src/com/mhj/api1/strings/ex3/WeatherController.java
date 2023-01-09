@@ -55,11 +55,18 @@ public class WeatherController {
 				weatherView.AllWeather(weatherDTOs);
 				break;
 			case 3:
+				WeatherDTO weatherDTO = weatherInput.search(weatherDTOs);
+				if(weatherDTO != null) {
+					weatherView.OneWeather(weatherDTO);
+				}else {
+					System.out.println("도시 정보가 없습니다.");
+				}
 				break;
 			case 4:
 				this.weatherDTOs = weatherInput.add(weatherDTOs);
 				break;
 			case 5:
+				this.weatherDTOs = weatherInput.remove(weatherDTOs);
 				break;
 			case 6:
 				System.out.println("프로그램을 종료합니다.");
