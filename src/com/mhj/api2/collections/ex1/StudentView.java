@@ -2,8 +2,7 @@ package com.mhj.api2.collections.ex1;
 
 public class StudentView {
 	
-	public void oneView(StudentDTO studentDTO) {
-		System.out.println("---------------");
+	public void view(StudentDTO studentDTO) {
 		System.out.println("이름     : " + studentDTO.getName());
 		System.out.println("번호     : " + studentDTO.getNum());
 		System.out.println("국어 점수 : " + studentDTO.getKor());
@@ -14,7 +13,7 @@ public class StudentView {
 		System.out.println("---------------");
 	}
 	
-	public void allView() {
+	public void view() {
 		
 	}
 

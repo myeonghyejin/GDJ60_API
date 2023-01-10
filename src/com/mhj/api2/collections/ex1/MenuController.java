@@ -12,7 +12,7 @@ public class MenuController {
 	//5. 학생 정보 삭제 (이름)
 	//6. 프로그램 종료
 	
-	public void Start () {
+	public void start () {
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -33,7 +33,7 @@ public class MenuController {
 			
 			switch (select) {
 			case 1:
-				studentDAO.init();
+				
 				break;
 			case 2:
 				break;

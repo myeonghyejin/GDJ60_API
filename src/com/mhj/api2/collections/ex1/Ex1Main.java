@@ -12,9 +12,9 @@ public class Ex1Main {
 		//5. 학생 정보 삭제 (이름)
 		//6. 프로그램 종료
 		
-		MenuController start = new MenuController();
+		MenuController menuController = new MenuController();
 		
-		start.Start();
+		menuController.start();
 
 	}
 
