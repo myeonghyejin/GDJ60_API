@@ -11,6 +11,10 @@ public class Ex1Main {
 		//4. 학생 정보 추가
 		//5. 학생 정보 삭제 (이름)
 		//6. 프로그램 종료
+		
+		MenuController start = new MenuController();
+		
+		start.Start();
 
 	}
 
