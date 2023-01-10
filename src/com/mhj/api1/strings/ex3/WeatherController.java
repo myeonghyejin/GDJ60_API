@@ -1,6 +1,5 @@
 package com.mhj.api1.strings.ex3;
 
-import java.awt.Window;
 import java.util.Scanner;
 
 public class WeatherController {
