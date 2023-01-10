@@ -1,5 +1,7 @@
 package com.mhj.api2.collections.ex1;
 
+import java.util.ArrayList;
+
 public class Ex1Main {
 
 	public static void main(String[] args) {
@@ -11,7 +13,9 @@ public class Ex1Main {
 		//4. 학생 정보 추가
 		//5. 학생 정보 삭제 (이름)
 		//6. 프로그램 종료
-
+		
+		new StudentController().start();
+		
 	}
 
 }
