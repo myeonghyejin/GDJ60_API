@@ -1,9 +1,13 @@
 package com.mhj.api2.collections.ex1;
 
-import java.net.Inet4Address;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Scanner;
 import java.util.StringTokenizer;
+import java.util.UUID;
 
 public class StudentDAO {
 	
@@ -90,7 +94,6 @@ public class StudentDAO {
 	}
 	
 	//5. 학생 정보 삭제
-
 	public int removeStudent (ArrayList<StudentDTO> ar) {
 		
 		//삭제 확인용 변수
@@ -119,6 +122,17 @@ public class StudentDAO {
 //		}
 		
 		return result;
+		
+	}
+	
+	//6. 학생 정보 백업
+	//현재 시간을 파일명으로 해서 파일 작성
+	public void backup(ArrayList<StudentDTO> ar) {
+		String name = UUID.randomUUID().toString();
+		Calendar calendar = Calendar.getInstance();
+		name = "studentsInfoBackup_" + calendar.getTimeInMillis();
+		File file = new File("C:\\fileTest", name + ".txt");
+		
 		
 	}
 		

@@ -27,7 +27,8 @@ public class StudentController {
 			System.out.println("3. 학생 정보 검색 조회");
 			System.out.println("4. 학생 정보 추가");
 			System.out.println("5. 학생 정보 삭제");
-			System.out.println("6. 프로그램 종료");
+			System.out.println("6. 학생 정보 백업");
+			System.out.println("7. 프로그램 종료");
 			
 			int select = sc.nextInt();
 			
@@ -59,6 +60,9 @@ public class StudentController {
 				}
 				break;
 			case 6:
+				studentDAO.backup(ar);
+				System.out.println("학생 정보가 백업되었습니다.");
+			case 7:
 				System.out.println("프로그램을 종료합니다.");
 				check = false;
 				break;
