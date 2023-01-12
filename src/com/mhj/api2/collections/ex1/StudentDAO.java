@@ -1,6 +1,8 @@
 package com.mhj.api2.collections.ex1;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,27 +30,69 @@ public class StudentDAO {
 	
 	//1. 학생 정보 초기화
 	public ArrayList<StudentDTO> init() {
-		String data = this.sb.toString();
-		data = data.replace(" ", "-");
-		data = data.replace(",", "");
 		
-		StringTokenizer st = new StringTokenizer(data, "-");
+		//1. 파일의 정보를 담는 객체 준비
+		//파일 정보 File
+		File file = new File(file, max + ".txt");
 		
+		String [] names = file.list();
+		long max = 0;
+		
+		for (String name:names) {
+			name = name.substring(0, name.lastIndexOf("."));
+			long date = Long.parseLong(name);
+			
+			if(date>max) {
+				max = date;
+			}
+		}
+		
+		//2. 파일 내용 읽기 위해서 연결 준비
+		FileReader fr = null;
+		BufferedReader br = null;
 		ArrayList<StudentDTO> ar = new ArrayList<>();
 		
-		while(st.hasMoreTokens()) {
-			StudentDTO studentDTO = new StudentDTO();
+		try {		
+			fr = new FileReader(file);
+			br = new BufferedReader(fr);
 			
-			studentDTO.setName(st.nextToken());
-			studentDTO.setNum(Integer.parseInt(st.nextToken()));
-			studentDTO.setKor(Integer.parseInt(st.nextToken()));
-			studentDTO.setEng(Integer.parseInt(st.nextToken()));
-			studentDTO.setMath(Integer.parseInt(st.nextToken()));
-			studentDTO.setTotal(studentDTO.getKor()+studentDTO.getEng()+studentDTO.getMath());
-			studentDTO.setAvg(studentDTO.getTotal()/3.0);
+			String data = null;
 			
-			ar.add(studentDTO);
+			while((data = br.readLine()) != null) {
+				data = data.replace(" ", "-");
+				data = data.replace(",", "");
+				
+				StringTokenizer st = new StringTokenizer(data, "-");
+				
+				while(st.hasMoreTokens()) {
+					StudentDTO studentDTO = new StudentDTO();
+					
+					studentDTO.setName(st.nextToken());
+					studentDTO.setNum(Integer.parseInt(st.nextToken()));
+					studentDTO.setKor(Integer.parseInt(st.nextToken()));
+					studentDTO.setEng(Integer.parseInt(st.nextToken()));
+					studentDTO.setMath(Integer.parseInt(st.nextToken()));
+					studentDTO.setTotal(studentDTO.getKor()+studentDTO.getEng()+studentDTO.getMath());
+					studentDTO.setAvg(studentDTO.getTotal()/3.0);
+					
+					ar.add(studentDTO);
+				}
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				br.close();
+				fr.close();
+			} catch (Exception e) {
+				
+			}
 		}
+		
+		
+		//String data = this.sb.toString();
 		
 		return ar;
 		
@@ -133,6 +177,38 @@ public class StudentDAO {
 		name = "studentsInfoBackup_" + calendar.getTimeInMillis();
 		File file = new File("C:\\fileTest", name + ".txt");
 		
+		FileWriter fw = null;
+		
+		try {
+			fw = new FileWriter(file);
+			
+			for (StudentDTO studentDTO : ar) {
+				StringBuffer sb = new StringBuffer();
+				sb.append(studentDTO.getName());
+				sb.append("-");
+				sb.append(studentDTO.getNum());
+				sb.append("-");
+				sb.append(studentDTO.getKor());
+				sb.append("-");
+				sb.append(studentDTO.getEng());
+				sb.append("-");
+				sb.append(studentDTO.getMath());
+				sb.append("\r\n");
+				
+				fw.write(sb.toString());
+				fw.flush();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				fw.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 		

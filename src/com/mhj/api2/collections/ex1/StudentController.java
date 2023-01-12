@@ -62,6 +62,7 @@ public class StudentController {
 			case 6:
 				studentDAO.backup(ar);
 				System.out.println("학생 정보가 백업되었습니다.");
+				break;
 			case 7:
 				System.out.println("프로그램을 종료합니다.");
 				check = false;
