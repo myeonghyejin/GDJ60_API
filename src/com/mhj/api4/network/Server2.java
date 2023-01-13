@@ -35,15 +35,13 @@ public class Server2 {
 		
 		boolean check = true;
 		
-		String select = null;
 		Random random = new Random();
 		
-		try {
-			
+		try {			
 			ss = new ServerSocket(8282);
 			System.out.println("접속을 기다리는 중입니다...");
 			sc = ss.accept();
-			System.out.println("접속 완료!");
+			System.out.println("유저 접속 완료");
 			
 			is = sc.getInputStream();
 			ir = new InputStreamReader(is);
@@ -52,48 +50,52 @@ public class Server2 {
 			os = sc.getOutputStream();
 			ow = new OutputStreamWriter(os);
 			bw = new BufferedWriter(ow);
-			
+						
 			//-------------------------------
 			
-			while(check) {
+			String [] lunch = {"짜장면", "만두", "김밥", "떡볶이", "제육볶음"};
+			String [] dinner = {"스테이크", "마라탕", "파스타", "피자", "치킨"};			
+			
+			while(check) {				
+				String data = br.readLine();					
+				int select = Integer.parseInt(data);
 				
-				select = br.readLine();
+				Calendar ca = Calendar.getInstance();
+				random = new Random(ca.getTimeInMillis());
 				
-				if (select.equals("1")) {
-					
+				String menu = null;
+				if (select==1) {				
 //					String [] lunchArray = {"짜장면", "만두", "김밥", "떡볶이", "제육볶음"};
 //					String lunch = lunchArray[random.nextInt(5)];
 //					
 //					bw.write(lunch);
+//					bw.flush();		
+					
+					int idx = random.nextInt(100)%5;					
+					menu = lunch[idx];					
+					System.out.println("점심 메뉴 : " + menu);
+					break;								
+				} else if (select==2) {					
+//					String dinner = dinnerArray[random.nextInt(5)];					
+//					System.out.println("저녁 메뉴 : " + dinner);
+//					
+//					bw.write(dinner);
 //					bw.flush();	
 					
-					String [] lunch = {"짜장면", "만두", "김밥", "떡볶이", "제육볶음"};
-					Calendar ca = Calendar.getInstance();
-					random = new Random(ca.getTimeInMillis());
-					int idx = random.nextInt(100)%5;
-					
-					String menu = lunch[idx];
-					
-					bw.write(menu);
-					bw.flush();
-					
-				} else if (select.equals("2")) {
-					
-					String [] dinnerArray = {"스테이크", "마라탕", "파스타", "피자", "치킨"};
-					String dinner = dinnerArray[random.nextInt(5)];
-					
-					bw.write(dinner);
-					bw.flush();
-					
-				} else if (select.equals("3")) {
-					
+					int idx = random.nextInt(100)%5;					
+					menu = dinner[idx];
+					break;							
+				} else if (select==3) {					
 					System.out.println("프로그램을 종료합니다");
 					check = false;
-					break;
-					
-				} else {
-					
-					System.out.println("잘못 입력했습니다.\n다시 작성해 주세요.");
+					break;					
+				} else {	
+					System.out.println("잘못 입력했습니다.\n다시 작성해 주세요.");				
+				}
+				
+				if (check) {
+					bw.write(menu+"\r\n");
+					bw.flush();
 				}
 			}
 			

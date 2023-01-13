@@ -22,6 +22,7 @@ public class Client2 {
 		// 2번 : 서버에서 저녁 메뉴 중 하나를 보내줌, 출력
 		// 3번 : 종료
 		
+		
 		Socket sc = null;
 		
 		OutputStream os = null;
@@ -39,7 +40,7 @@ public class Client2 {
 		try {
 			
 			sc = new Socket("localhost", 8282);
-			System.out.println("유저 접속");
+			System.out.println("접속 완료!");
 			
 			os = sc.getOutputStream();
 			ow = new OutputStreamWriter(os);
@@ -56,18 +57,19 @@ public class Client2 {
 				System.out.println("2. 저녁 메뉴 추천");
 				System.out.println("3. 종료");
 				
-				String select = scanner.next();
+				int select = scanner.nextInt();
 				
-				bw.write(select);
+				bw.write(select+"\r\n");
 				bw.flush();
 				
-				if(select.equals("3")) {
+				if(select == 3) {
 					System.out.println("프로그램이 종료됩니다.");
+					check = false;
 					break;
 				}
 				
-				String menu = br.readLine();
 				
+				String menu = br.readLine();				
 				System.out.println(menu);
 				
 			}
