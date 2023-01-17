@@ -34,15 +34,12 @@ public class Server1 {
 			sc = ss.accept();
 			System.out.println("Client와 연결 성공");
 			
-			is = sc.getInputStream();
-			ir = new InputStreamReader(is);
-			br = new BufferedReader(ir);
 			
-			os = sc.getOutputStream();
-			ow = new OutputStreamWriter(os);
-			bw = new BufferedWriter(ow);
 			
 			while(true) {
+				is = sc.getInputStream();
+				ir = new InputStreamReader(is);
+				br = new BufferedReader(ir);
 				
 				String msg = br.readLine();
 				
@@ -55,6 +52,10 @@ public class Server1 {
 				
 				System.out.println("Client로 보낼 메시지를 입력하세요.");
 				msg = scanner.next();
+				
+				os = sc.getOutputStream();
+				ow = new OutputStreamWriter(os);
+				bw = new BufferedWriter(ow);
 				
 				bw.write(msg + "\r\n");
 				bw.flush();	
